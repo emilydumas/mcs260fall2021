@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
     print("Usage: {} INPUTFILE".format(sys.argv[0]))
     exit(1)
 
-fn = sys.argv[1]
+fn = sys.argv[1] # input filename
 infile = open(fn,"r",encoding="UTF-8")
 
 # Characters that are always taken to mark a word boundary
@@ -56,7 +56,7 @@ for line in infile: # handle one line at a time
     if len(line_words) > max_words_per_line: 
         max_words_per_line = len(line_words)
     # Iterate over the words in this line
-    for w in split_words(line):
+    for w in line_words:
         wordcount = wordcount + 1 # always increase count
         if w in word_histogram:
             # Word previously seen; increase the count
