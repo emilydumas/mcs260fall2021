@@ -15,3 +15,12 @@ https://www.gutenberg.org/files/1400/1400-0.txt
 The Project Gutenberg eBook of Pride and Prejudice, by Jane Austen
 (Header removed for easier textual analysis)
 https://www.gutenberg.org/files/1342/1342-0.txt
+
+* `iema_hazardous_material_spills.csv`
+From the State of Illinois Data Portal
+https://data.illinois.gov/dataset/469iema_hazardous_material_spills
+
+* `episodes.json`
+List of episodes of Netflix TV series "Stranger Things" from TVmaze
+https://api.tvmaze.com/shows/2993/episodes
+
