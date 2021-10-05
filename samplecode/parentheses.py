@@ -22,10 +22,9 @@ for i,c in enumerate(s):
         # Right paren closes whatever left paren is at the
         # top of the stack.  But we need to make sure the 
         # stack is nonempty before trying to pop.
-        if len(currently_open) > 0:
-            # Ok
+        try:
             currently_open.pop()
-        else:
+        except IndexError:
             # Error because there was no "(" on the
             # stack to match this ")"
             print("Error:")

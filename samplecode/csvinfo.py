@@ -8,7 +8,11 @@ if len(sys.argv) < 2:
     exit(1)
 
 fn = sys.argv[1]
-fobj = open(fn,"r",encoding="UTF-8")
+try:
+    fobj = open(fn,"r",encoding="UTF-8")
+except OSError as e:
+    print("Failed to open input file:",e)
+    exit(1)
 rdr = csv.reader(fobj)
 
 print("Report on:",fn)
