@@ -7,20 +7,18 @@ import os
 #----------------------------------------------------------------------
 #                    Functions that provide commands
 
+def do_exit():
+    """exit the program"""
+    exit()
+
 def do_unknown():
     print("Unknown or malformed command.  (The 'help' command will list known commands.)")
 
 def do_help():
-    print("""Known commands:
-help - get help
-exit - quit the program
-listdir PATH - list the contents of a directory
-numfiles PATH - show number of files and subdirs in a directory
-create PATH - make a new empty file
-moveto PATH - change current working directory
-whereami - show current working directory
-copy SOURCE DEST - copy contents of SOURCE to new file DEST
-""")
+    """print a help message"""
+    print("Known commands:")
+    for name in handlers:
+        print(name,"-",handlers[name].__doc__)
 
 def do_whereami():
     """show current working directory"""
@@ -30,8 +28,14 @@ def do_moveto(a):
     """change current working directory"""
     os.chdir(a)
 
-def do_listdir(a):
+def do_listdir(*args):
     """list the contents of a directory"""
+    if len(args) > 1:
+        raise TypeError("listdir accepts at most one argument")
+    if len(args) == 1:
+        a = args[0]
+    else:
+        a = os.getcwd()
     for fn in os.listdir(a):
         print(fn)
 
@@ -69,6 +73,18 @@ def do_copy(src,dst):
         outfile.close()
 #----------------------------------------------------------------------
 
+# Dispatch table
+handlers = {
+    "help": do_help,
+    "exit": do_exit,
+    "listdir": do_listdir,
+    "numfiles": do_numfiles,
+    "create": do_create,
+    "moveto": do_moveto,
+    "whereami": do_whereami,
+    "copy": do_copy
+}
+
 
 # Main loop
 
@@ -78,40 +94,13 @@ while True:
     cmdparts = s.split()
     if len(cmdparts) == 0:
         print("No command given.")
-    elif len(cmdparts) == 1:
-        # Commands that take no arguments
-        name = cmdparts[0]
-        if name == "exit":
-            exit()
-        elif name == "whereami":
-            do_whereami()
-        elif name == "help":
-            do_help()
-        else:
-            do_unknown()
-    elif len(cmdparts) == 2:
-        # Commands that take one argument
-        name = cmdparts[0]
-        arg = cmdparts[1]
-        if name == "listdir":
-            do_listdir(arg)
-        elif name == "create":
-            do_create(arg)
-        elif name == "numfiles":
-            do_numfiles(arg)
-        elif name == "moveto":
-            do_moveto(arg)
-        else:
-            do_unknown()
-    elif len(cmdparts) == 3:
-        # Commands that take two arguments
-        name = cmdparts[0]
-        arg1 = cmdparts[1]
-        arg2 = cmdparts[2]
-        if name == "copy":
-            do_copy(arg1,arg2)
-        else:
-            do_unknown()
     else:
-        # 3 or more arguments = invalid
-        do_unknown()
+        name = cmdparts[0]
+        args = cmdparts[1:]
+        if name in handlers:
+            try:
+                handlers[name](*args)
+            except TypeError:
+                print("Malformed command (wrong number of args?)")
+        else:
+            do_unknown()
