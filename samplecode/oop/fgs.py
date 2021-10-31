@@ -1,4 +1,5 @@
 "Lazy finite geometric sequence example"
+# MCS 260 Fall 2021 Lecture 28
 
 class FGS:
     "Lazy finite geometric sequence"
@@ -19,7 +20,8 @@ class FGS:
         compute and return the element of the geometric sequence
         at index `idx`
         """
-        print("FGS.__getitem__({}) was called".format(idx))
+	# uncomment next line to get notification of each call
+        # print("FGS.__getitem__({}) was called".format(idx))
         if idx < 0 or idx >= self.length:
             # The requested index is not valid
             raise IndexError("this FGS has {} terms and so index {} is invalid".format(
