@@ -1,7 +1,7 @@
 """
-Producer-consumer example with multiple threads
+Producer-consumer example (multiple consumers)
 """
-# MCS 260 Fall 2021 Lecture 39
+# MCS 260 Fall 2021 Lecture 39 (add-on example posted after lecture)
 import threading
 import time
 import random
@@ -9,7 +9,8 @@ import queue
 
 class WorkerThread(threading.Thread):
     """
-    Thread that does work in the background
+    Thread that does work in the background, taking jobs from
+    a specified queue.Queue
     """
     def __init__(self,Q,workernumber=0):
         """
