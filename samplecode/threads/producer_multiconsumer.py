@@ -35,7 +35,7 @@ class WorkerThread(threading.Thread):
 
 jobqueue = queue.Queue()
 
-num_workers = 3
+num_workers = 10
 num_jobs = 30
 
 print("Starting {} worker threads".format(num_workers))
@@ -46,6 +46,9 @@ for T in workers:
 for i in range(num_jobs):
     print("Submit job {}".format(i),flush=True)
     jobqueue.put(i)
+    if random.random() < 0.25:
+        # 25 % chance we pause
+        time.sleep(0.5 + 2.5*random.random())
 
 print("Adding None(s) to the queue so the worker quits when done")
 

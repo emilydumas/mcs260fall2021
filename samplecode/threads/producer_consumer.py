@@ -22,7 +22,7 @@ class WorkerThread(threading.Thread):
     def run(self):
         "Main work of the thread"
         while True:
-            x = self.Q.get()
+            x = self.Q.get()   # .get_or_wait_until_something_is_available_and_get()
             if x == None:
                 print("Worker Thread shutting down on request")
                 break
@@ -40,3 +40,7 @@ for i in range(30):
 
 print("Adding None to the queue so the worker quits when done")
 jobqueue.put(None)
+
+while True:
+    print("Main thread is still running...")
+    time.sleep(1)
