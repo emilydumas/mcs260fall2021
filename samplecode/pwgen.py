@@ -2,6 +2,7 @@
 # MCS 260 Fall 2021
 # David Dumas
 import random
+import time
 
 # Password character classes
 LCL = "abcdefghijklmnopqrstuvwxyz"
@@ -13,7 +14,8 @@ def random_password(length=8,
                     special_frac=0.5,
                     require_capital=False,
                     require_symbol=False,
-                    require_digit=False):
+                    require_digit=False,
+                    delay=0):
     """
     Generate a random password of length `length`, in which the
     fraction `special_frac` consists of characters other than 
@@ -29,6 +31,11 @@ def random_password(length=8,
     is ignored and a random password of lowercase letters is
     returned.
     """
+
+    if delay > 0:
+        print("SLEEPING")
+        time.sleep(delay)
+        print("AWAKE")
 
     if not any([require_capital, require_symbol, require_digit]):
         return "".join([random.choice(LCL) for _ in range(length)])
