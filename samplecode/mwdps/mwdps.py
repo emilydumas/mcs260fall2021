@@ -1,5 +1,5 @@
 # MCS 260 Fall 2021 Project 1 solution
-# David Dumas
+# Emily Dumas
 
 def mwdp(x):
     """For an integer x, return the integer mean

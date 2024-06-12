@@ -1,7 +1,7 @@
 # MCS 260 Fall 2021 Lecture 9
 # Function example: read yes/no answer
 # from keyboard.
-# David Dumas
+# Emily Dumas
 
 def input_yes_no():  # no parameters
     while True:

@@ -1,6 +1,6 @@
 """Text adventure game engine"""
 # MCS 260 Fall 2021 Project 2 Solution
-# David Dumas
+# Emily Dumas
 import sys
 import json
 

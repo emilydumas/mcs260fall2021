@@ -1,5 +1,5 @@
 "tkinter GUI to convert integer between bases"
-# MCS 260 Fall 2021 David Dumas
+# MCS 260 Fall 2021 Emily Dumas
 import tkinter
 import tkinter.ttk
 

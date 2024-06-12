@@ -20,7 +20,7 @@ if not os.path.exists(fn):
     print("You can specify the CSV file to use as a command line argument.")
     print("The CSV dataset is available from:")
     print(" * Original source: https://data.illinois.gov/dataset/469iema_hazardous_material_spills")
-    print(" * Course sample code repo: https://raw.githubusercontent.com/daviddumas/mcs260fall2021/main/samplecode/data/iema_hazardous_material_spills.csv")
+    print(" * Course sample code repo: https://raw.githubusercontent.com/emilydumas/mcs260fall2021/main/samplecode/data/iema_hazardous_material_spills.csv")
     exit(1)
 # ---
 

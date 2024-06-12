@@ -7,7 +7,7 @@ repeatedly.)
 """
 
 # MCS 260 Fall 2021 Project 3 solution
-# David Dumas
+# Emily Dumas
 
 def orbit(f,x0,n):
     """

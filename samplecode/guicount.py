@@ -2,7 +2,7 @@
 GUI counter
 """
 # MCS 260 Fall 2021
-# David Dumas
+# Emily Dumas
 import tkinter
 import tkinter.ttk
 

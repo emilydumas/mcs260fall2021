@@ -1,5 +1,5 @@
 """Mini terminal application for demonstration purposes"""
-# MCS 260 Fall 2021 Lecture 21
+# MCS 260 Fall 2021 Lecture 21 and 22 (adding continue)
 # Function-based version of terminal.py
 
 import os
@@ -94,13 +94,14 @@ while True:
     cmdparts = s.split()
     if len(cmdparts) == 0:
         print("No command given.")
+        continue
+    
+    name = cmdparts[0]
+    args = cmdparts[1:]
+    if name in handlers:
+        try:
+            handlers[name](*args)
+        except TypeError:
+            print("Malformed command (wrong number of args?)")
     else:
-        name = cmdparts[0]
-        args = cmdparts[1:]
-        if name in handlers:
-            try:
-                handlers[name](*args)
-            except TypeError:
-                print("Malformed command (wrong number of args?)")
-        else:
-            do_unknown()
+        do_unknown()

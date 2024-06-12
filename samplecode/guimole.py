@@ -1,6 +1,6 @@
 """GUI demo: whack-a-mole"""
 # MCS 260 Fall 2021
-# David Dumas
+# Emily Dumas
 import random
 import time
 import tkinter

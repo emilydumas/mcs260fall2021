@@ -30,4 +30,8 @@ class FGS:
             ))
         return self.start * (self.ratio ** idx)
 
-    
+    def __setitem__(self,idx,val):
+        if idx == 0:
+            self.start = val
+        else:
+            raise IndexError("FGS only supports item assignment at index 0")
